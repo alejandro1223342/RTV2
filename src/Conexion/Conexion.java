@@ -41,9 +41,18 @@ public class Conexion {
         }
         return cx;
     }
+    
+    public Connection desconectar() throws SQLException {
+    if (con != null) {
+        con.close();
+        System.out.println("Conexión cerrada.");
+    }
+        return null;
+}
      
     public static void main(String[] args) throws SQLException{
     Conexion conexion= new Conexion("rtv_ist17j");
     conexion.conecta();
+    
 }
 }
