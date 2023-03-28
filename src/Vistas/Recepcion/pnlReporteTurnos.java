@@ -210,7 +210,7 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_pdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pdfMouseClicked
-/*
+/*/////
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
