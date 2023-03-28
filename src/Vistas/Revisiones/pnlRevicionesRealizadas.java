@@ -5,7 +5,12 @@
 package Vistas.Revisiones;
 
 import Conexion.Conexion;
+import Conexion.NonEditableEditor;
+import Vistas.Recepcion.TableToPDF;
+import Vistas.Recepcion.pnlReporteTurnos;
+import com.itextpdf.text.DocumentException;
 import java.awt.HeadlessException;
+import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,8 +21,11 @@ import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
@@ -38,6 +46,8 @@ public class pnlRevicionesRealizadas extends javax.swing.JPanel {
     /**
      * Creates new form pnlRevisionTurnos
      */
+        private final TableToPDF pdf;
+
     public pnlRevicionesRealizadas() {
         initComponents();
         cx = new Conexion("rtv_ist17j");
@@ -45,7 +55,31 @@ public class pnlRevicionesRealizadas extends javax.swing.JPanel {
             Statement st = cx.conecta().createStatement();
             ResultSet rs = st.executeQuery(query);*/
         mostrarDatos();
+        
+        pdf = new TableToPDF();
+        
+        TableColumnModel columnModel = tabla.getColumnModel();
+        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        TableColumn columna0 = columnModel.getColumn(0);
+        TableColumn columna1 = columnModel.getColumn(1);
+        TableColumn columna2 = columnModel.getColumn(2);
+        TableColumn columna3 = columnModel.getColumn(3);
+        TableColumn columna4 = columnModel.getColumn(4);
+        columna0.setPreferredWidth(100);
+        columna1.setPreferredWidth(150);
+        columna2.setPreferredWidth(150);
+        columna3.setPreferredWidth(150);
+        columna4.setPreferredWidth(300);
 
+    }
+    
+     private void setTableNonEditable(JTable tcliente) {
+        for (int i = 0; i < tcliente.getColumnCount(); i++) {
+            for (int j = 0; j < tcliente.getRowCount(); j++) {
+                tcliente.getModel().setValueAt(tcliente.getValueAt(j, i), j, i);
+            }
+            tcliente.getColumnModel().getColumn(i).setCellEditor(new NonEditableEditor());
+        }
     }
 
     public void mostrarDatos() {
@@ -96,6 +130,8 @@ public class pnlRevicionesRealizadas extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        btnImprimir = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(880, 530));
 
@@ -124,21 +160,58 @@ public class pnlRevicionesRealizadas extends javax.swing.JPanel {
         tabla.setRowHeight(40);
         jScrollPane2.setViewportView(tabla);
 
+        btnImprimir.setBackground(new java.awt.Color(102, 102, 102));
+        btnImprimir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnImprimirMousePressed(evt);
+            }
+        });
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raven/cell/pdf.png"))); // NOI18N
+        jLabel7.setText("PDF");
+
+        javax.swing.GroupLayout btnImprimirLayout = new javax.swing.GroupLayout(btnImprimir);
+        btnImprimir.setLayout(btnImprimirLayout);
+        btnImprimirLayout.setHorizontalGroup(
+            btnImprimirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnImprimirLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        btnImprimirLayout.setVerticalGroup(
+            btnImprimirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnImprimirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(373, 373, 373)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -157,12 +230,23 @@ public class pnlRevicionesRealizadas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
+        try {
+            // TODO add your handling code here:
+            pdf.exportarTabla(tabla);
+        } catch (DocumentException ex) {
+            Logger.getLogger(pnlReporteTurnos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(pnlReporteTurnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImprimirMousePressed
+
   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnRegistrarPG;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel btnImprimir;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tabla;

@@ -5,6 +5,12 @@
 package Vistas.Revisiones;
 
 import Conexion.Conexion;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -230,6 +236,48 @@ public class frmPrueba_Frenos extends javax.swing.JFrame {
             //String query = "call sp_logeo('" + usuario + "','" + contra + "');";
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "no se guadaron los datos");
+        }
+        
+        Document documento = new Document();
+            String id = txt_id.getText();
+            String fecha = txt_fecha.getText();
+        try {
+            String ruta = System.getProperty("user.home");
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/Reporte-"+ id+"-"+fecha+".pdf"));
+            documento.open();
+
+            PdfPTable tabla = new PdfPTable(6);
+            tabla.addCell("PLACA");
+            tabla.addCell("VEL.INICIAL");
+            tabla.addCell("FRN.DISTACIA");
+            tabla.addCell("FRN.FUERZA");
+            tabla.addCell("FRN.TIEMPO");
+            tabla.addCell("RESULTADO");
+
+            try {
+                String query = "CALL sp_reporte_pruebas(1,'" + id + "','" + fecha + "')";
+                Statement st = cx.conecta().createStatement();
+                ResultSet rs = st.executeQuery(query);
+
+                if (rs.next()) {
+                    do {
+                        tabla.addCell(rs.getString(1));
+                        tabla.addCell(rs.getString(2));
+                        tabla.addCell(rs.getString(3));
+                        tabla.addCell(rs.getString(4));
+                        tabla.addCell(rs.getString(5));
+                        tabla.addCell(rs.getString(6));
+                    } while (rs.next());
+                    documento.add(tabla);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existen datos . ");
+                }
+            } catch (SQLException e) {
+            }
+            documento.close();
+            JOptionPane.showMessageDialog(null, "Reporte creado con exito");
+        } catch (DocumentException | FileNotFoundException e) {
+            System.out.println("Error : " + e);
         }
 
     }//GEN-LAST:event_btnRegistrarPGMousePressed

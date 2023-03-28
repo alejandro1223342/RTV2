@@ -38,8 +38,6 @@ public class frmRecepcion extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnRegitrarVehiculo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        btnCerrar = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         lblcerrar = new javax.swing.JLabel();
         lblminimizar = new javax.swing.JLabel();
@@ -212,43 +210,6 @@ public class frmRecepcion extends javax.swing.JFrame {
         );
 
         side_pane.add(btnRegitrarVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, -1));
-
-        btnCerrar.setBackground(new java.awt.Color(102, 102, 102));
-        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCerrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCerrarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnCerrarMousePressed(evt);
-            }
-        });
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Cerrar sesión");
-
-        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
-        btnCerrar.setLayout(btnCerrarLayout);
-        btnCerrarLayout.setHorizontalGroup(
-            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addContainerGap())
-        );
-        btnCerrarLayout.setVerticalGroup(
-            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 170, -1));
 
         jPanel1.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 620));
 
@@ -427,20 +388,6 @@ public class frmRecepcion extends javax.swing.JFrame {
         btnRptTurno.setBackground(new Color(102, 102, 102));
     }//GEN-LAST:event_btnRptTurnoMouseExited
 
-    private void btnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseEntered
-        btnCerrar.setBackground(new Color(153, 153, 153));
-    }//GEN-LAST:event_btnCerrarMouseEntered
-
-    private void btnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseExited
-        btnCerrar.setBackground(new Color(102, 102, 102));    }//GEN-LAST:event_btnCerrarMouseExited
-
-    private void btnCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMousePressed
-        // TODO add your handling code here:
-
-        System.exit(0);
-
-    }//GEN-LAST:event_btnCerrarMousePressed
-
     private void lblminimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_lblminimizarMousePressed
@@ -484,7 +431,6 @@ public class frmRecepcion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnCerrar;
     private javax.swing.JPanel btnRegistrarCliente;
     private javax.swing.JPanel btnRegistrarTurno;
     private javax.swing.JPanel btnRegitrarVehiculo;
@@ -496,7 +442,6 @@ public class frmRecepcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblcerrar;

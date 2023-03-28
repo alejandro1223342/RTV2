@@ -67,15 +67,20 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
     public void mostrarDatos() {
         DefaultTableModel tcliente = new DefaultTableModel();
         tcliente.addColumn("TURNO");
-        tcliente.addColumn("PLACA");
         tcliente.addColumn("FECHA");
         tcliente.addColumn("COSTO");
+        tcliente.addColumn("PLACA");
         tcliente.addColumn("PRUEBAS");
         tabla.setModel(tcliente);
 
         String[] datos = new String[5];
 
         try {
+           /*int c = tabla.getSelectedRow();
+           String pruebas = tabla.getValueAt(c, 4).toString();
+           String id = tabla.getValueAt(c, 0).toString();
+           String fecha = tabla.getValueAt(c, 1).toString();*/
+           
             String query = "CALL sp_reporte_recepcion(); ";
             Statement st = cx.conecta().createStatement();
             ResultSet rs = st.executeQuery(query);

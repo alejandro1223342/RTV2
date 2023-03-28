@@ -5,6 +5,7 @@
 package Vistas.Revisiones;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,8 +24,6 @@ public class frmRTV extends javax.swing.JFrame {
         side_pane = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         btnRevisiones = new javax.swing.JPanel();
         btn_realizadas = new javax.swing.JLabel();
         btnRevisiones1 = new javax.swing.JPanel();
@@ -33,6 +32,7 @@ public class frmRTV extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         pnl_host = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -53,31 +53,14 @@ public class frmRTV extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 2));
         side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 120, -1));
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Cerrar sesión");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(24, 24, 24))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        side_pane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 40));
-
         btnRevisiones.setBackground(new java.awt.Color(102, 102, 102));
         btnRevisiones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRevisionesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRevisionesMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnRevisionesMousePressed(evt);
             }
@@ -86,7 +69,7 @@ public class frmRTV extends javax.swing.JFrame {
         btn_realizadas.setBackground(new java.awt.Color(255, 255, 255));
         btn_realizadas.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btn_realizadas.setForeground(new java.awt.Color(255, 255, 255));
-        btn_realizadas.setText("Reviciones realizadas");
+        btn_realizadas.setText("Reporte Revisiones");
         btn_realizadas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btn_realizadasMousePressed(evt);
@@ -98,9 +81,9 @@ public class frmRTV extends javax.swing.JFrame {
         btnRevisionesLayout.setHorizontalGroup(
             btnRevisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(btn_realizadas)
-                .addGap(23, 23, 23))
+                .addGap(8, 8, 8))
         );
         btnRevisionesLayout.setVerticalGroup(
             btnRevisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,6 +94,12 @@ public class frmRTV extends javax.swing.JFrame {
 
         btnRevisiones1.setBackground(new java.awt.Color(102, 102, 102));
         btnRevisiones1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRevisiones1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRevisiones1MouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnRevisiones1MousePressed(evt);
             }
@@ -180,15 +169,27 @@ public class frmRTV extends javax.swing.JFrame {
 
         pnl_host.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raven/cell/Logo para Taller de Mecánica Rueda Dentada Clásico Negro y Beige.png"))); // NOI18N
+
         javax.swing.GroupLayout pnl_hostLayout = new javax.swing.GroupLayout(pnl_host);
         pnl_host.setLayout(pnl_hostLayout);
         pnl_hostLayout.setHorizontalGroup(
             pnl_hostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 880, Short.MAX_VALUE)
+            .addGroup(pnl_hostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_hostLayout.createSequentialGroup()
+                    .addGap(182, 182, 182)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(182, Short.MAX_VALUE)))
         );
         pnl_hostLayout.setVerticalGroup(
             pnl_hostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(pnl_hostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_hostLayout.createSequentialGroup()
+                    .addGap(9, 9, 9)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(9, Short.MAX_VALUE)))
         );
 
         jPanel1.add(pnl_host, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 880, 530));
@@ -243,6 +244,22 @@ public class frmRTV extends javax.swing.JFrame {
         pnl_host.repaint();
     }//GEN-LAST:event_btn_realizadasMousePressed
 
+    private void btnRevisiones1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisiones1MouseEntered
+       btnRevisiones1.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_btnRevisiones1MouseEntered
+
+    private void btnRevisiones1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisiones1MouseExited
+        btnRevisiones1.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnRevisiones1MouseExited
+
+    private void btnRevisionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisionesMouseEntered
+       btnRevisiones.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_btnRevisionesMouseEntered
+
+    private void btnRevisionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisionesMouseExited
+        btnRevisiones.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnRevisionesMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -289,7 +306,6 @@ public class frmRTV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnl_host;
     private javax.swing.JPanel pnl_overlay;

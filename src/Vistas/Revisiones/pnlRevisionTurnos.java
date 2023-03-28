@@ -96,7 +96,8 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        btnPrueba = new javax.swing.JButton();
+        btnRegistrarPG = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(880, 530));
 
@@ -125,17 +126,33 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         tabla.setRowHeight(40);
         jScrollPane2.setViewportView(tabla);
 
-        btnPrueba.setText("Pruebas");
-        btnPrueba.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistrarPG.setBackground(new java.awt.Color(153, 153, 153));
+        btnRegistrarPG.setBackground(new java.awt.Color(153, 153, 153));
+        btnRegistrarPG.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnPruebaMousePressed(evt);
+                btnRegistrarPGMousePressed(evt);
             }
         });
-        btnPrueba.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPruebaActionPerformed(evt);
-            }
-        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setText("    PRUEBAS");
+
+        javax.swing.GroupLayout btnRegistrarPGLayout = new javax.swing.GroupLayout(btnRegistrarPG);
+        btnRegistrarPG.setLayout(btnRegistrarPGLayout);
+        btnRegistrarPGLayout.setHorizontalGroup(
+            btnRegistrarPGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegistrarPGLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btnRegistrarPGLayout.setVerticalGroup(
+            btnRegistrarPGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnRegistrarPGLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,8 +164,8 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
                         .addGap(43, 43, 43)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(btnPrueba)))
+                        .addGap(386, 386, 386)
+                        .addComponent(btnRegistrarPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,9 +173,9 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrueba)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRegistrarPG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -177,7 +194,7 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPruebaActionPerformed
+    private void btnRegistrarPGMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPGMousePressed
         // TODO add your handling code here:
         int c = tabla.getSelectedRow();
         /*String id = tabla.getValueAt(c, 0).toString();
@@ -242,18 +259,15 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
             frmf.setVisible(true);
             pl.setVisible(true);
         }
-
-    }//GEN-LAST:event_btnPruebaActionPerformed
-
-    private void btnPruebaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPruebaMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPruebaMousePressed
+        
+    }//GEN-LAST:event_btnRegistrarPGMousePressed
 
   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrueba;
+    private javax.swing.JPanel btnRegistrarPG;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tabla;
