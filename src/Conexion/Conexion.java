@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 /**
  *
  * @author alejo
@@ -16,11 +17,12 @@ public class Conexion {
     private Connection con = null;
 
     
-    String bd="rtv_ist17j2";
+    String bd="rtv_ist17j";
     String url="jdbc:mysql://localhost:3306/";
    
     String user = "root";
-    String pass = "Helado.12";
+    String pass = "justin";
+    //String pass = "Helado.12";
     String driver="com.mysql.jdbc.Driver";
     Connection cx;
     

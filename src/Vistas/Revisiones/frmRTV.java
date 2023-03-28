@@ -26,7 +26,9 @@ public class frmRTV extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         btnRevisiones = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        btn_realizadas = new javax.swing.JLabel();
+        btnRevisiones1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -72,7 +74,7 @@ public class frmRTV extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        side_pane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 170, 40));
+        side_pane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 40));
 
         btnRevisiones.setBackground(new java.awt.Color(102, 102, 102));
         btnRevisiones.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,26 +83,59 @@ public class frmRTV extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Revisiones");
+        btn_realizadas.setBackground(new java.awt.Color(255, 255, 255));
+        btn_realizadas.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        btn_realizadas.setForeground(new java.awt.Color(255, 255, 255));
+        btn_realizadas.setText("Reviciones realizadas");
+        btn_realizadas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_realizadasMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnRevisionesLayout = new javax.swing.GroupLayout(btnRevisiones);
         btnRevisiones.setLayout(btnRevisionesLayout);
         btnRevisionesLayout.setHorizontalGroup(
             btnRevisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisionesLayout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_realizadas)
                 .addGap(23, 23, 23))
         );
         btnRevisionesLayout.setVerticalGroup(
             btnRevisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(btn_realizadas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        side_pane.add(btnRevisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 170, -1));
+        side_pane.add(btnRevisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, -1));
+
+        btnRevisiones1.setBackground(new java.awt.Color(102, 102, 102));
+        btnRevisiones1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnRevisiones1MousePressed(evt);
+            }
+        });
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Revisiones");
+
+        javax.swing.GroupLayout btnRevisiones1Layout = new javax.swing.GroupLayout(btnRevisiones1);
+        btnRevisiones1.setLayout(btnRevisiones1Layout);
+        btnRevisiones1Layout.setHorizontalGroup(
+            btnRevisiones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisiones1Layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(23, 23, 23))
+        );
+        btnRevisiones1Layout.setVerticalGroup(
+            btnRevisiones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        side_pane.add(btnRevisiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 170, -1));
 
         jPanel1.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 620));
 
@@ -183,6 +218,31 @@ public class frmRTV extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void btnRevisiones1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisiones1MousePressed
+        // TODO add your handling code here:
+        pnlRevisionTurnos pl= new pnlRevisionTurnos();
+        pl.setSize(880, 530);
+        pl.setLocation(0, 0);
+        
+        pnl_host.removeAll();
+        pnl_host.add(pl, BorderLayout.CENTER);
+        pnl_host.revalidate();
+        pnl_host.repaint();
+    }//GEN-LAST:event_btnRevisiones1MousePressed
+
+    private void btn_realizadasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizadasMousePressed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        pnlRevicionesRealizadas pl= new pnlRevicionesRealizadas();
+        pl.setSize(880, 530);
+        pl.setLocation(0, 0);
+        
+        pnl_host.removeAll();
+        pnl_host.add(pl, BorderLayout.CENTER);
+        pnl_host.revalidate();
+        pnl_host.repaint();
+    }//GEN-LAST:event_btn_realizadasMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -209,6 +269,7 @@ public class frmRTV extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmRTV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -220,11 +281,13 @@ public class frmRTV extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnRevisiones;
+    private javax.swing.JPanel btnRevisiones1;
+    private javax.swing.JLabel btn_realizadas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;

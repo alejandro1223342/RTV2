@@ -26,7 +26,7 @@ import raven.cell.TableActionEvent;
  *
  * @author alejo
  */
-public class pnlRevisionTurnos extends javax.swing.JPanel {
+public class pnlRevicionesRealizadas extends javax.swing.JPanel {
 
     public String getFecha() {
         return fecha;
@@ -38,7 +38,7 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
     /**
      * Creates new form pnlRevisionTurnos
      */
-    public pnlRevisionTurnos() {
+    public pnlRevicionesRealizadas() {
         initComponents();
         cx = new Conexion("rtv_ist17j");
         /* String query = "CALL sp_turnos(); ";
@@ -60,7 +60,7 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         String[] datos = new String[5];
 
         try {
-            String query = "CALL sp_reporte_turno(0) ";
+            String query = "CALL sp_reporte_turno(1) ";
             Statement st = cx.conecta().createStatement();
             ResultSet rs = st.executeQuery(query);
 
@@ -96,7 +96,6 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        btnPrueba = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(880, 530));
 
@@ -125,30 +124,13 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         tabla.setRowHeight(40);
         jScrollPane2.setViewportView(tabla);
 
-        btnPrueba.setText("Pruebas");
-        btnPrueba.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnPruebaMousePressed(evt);
-            }
-        });
-        btnPrueba.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPruebaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(361, 361, 361)
-                        .addComponent(btnPrueba)))
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,9 +138,7 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPrueba)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -177,83 +157,10 @@ public class pnlRevisionTurnos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPruebaActionPerformed
-        // TODO add your handling code here:
-        int c = tabla.getSelectedRow();
-        /*String id = tabla.getValueAt(c, 0).toString();
-        String fecha = tabla.getValueAt(c, 1).toString();*/
-        String pruebas = tabla.getValueAt(c, 4).toString();
-        //seleccionarP();
-        id = tabla.getValueAt(c, 0).toString();
-        fecha = tabla.getValueAt(c, 1).toString();
-        frmPrueba_Luces pl = new frmPrueba_Luces();
-        pl.actualizarInformacion(id, fecha);
-        pl.txtLPlaca.setText(pl.actualizarInformacion(id, fecha));
-        pl.txt_fecha.setText(fecha);
-        pl.txt_id.setText(id);
-        
-        frmPrueba_Gases frmg = new frmPrueba_Gases();
-        frmg.actualizarInformacion(id, fecha);
-        frmg.txtGPlaca.setText(frmg.actualizarInformacion(id, fecha));
-        frmg.txt_fecha.setText(fecha);
-        frmg.txt_id.setText(id);
-        
-        frmPrueba_Frenos frmf = new frmPrueba_Frenos();
-        frmf.actualizarInformacion(id, fecha);
-        frmf.txt_fecha.setText(fecha);
-        frmf.txt_id.setText(id);
-        
-        frmf.txtFPlaca.setText(frmf.actualizarInformacion(id, fecha));
-        //frmf.insertFrenos(id, fecha);
-        
-        if ("Gases".equals(pruebas)) {
-
-            frmg.setVisible(true);
-
-        }
-        if ("Frenos".equals(pruebas)) {
-
-            frmf.setVisible(true);
-        }
-        if ("Luces".equals(pruebas)) {
-
-            pl.setVisible(true);
-        }
-        // SEPARADOR
-        if ("Gases,Frenos".equals(pruebas)) {
-
-            frmg.setVisible(true);
-
-            frmf.setVisible(true);
-        }
-        if ("Frenos,Luces".equals(pruebas)) {
-
-            frmf.setVisible(true);
-            pl.setVisible(true);
-
-        }
-        if ("Gases,Luces".equals(pruebas)) {
-            frmg.setVisible(true);
-            pl.setVisible(true);
-        }
-        //SEPARADOR
-        if ("Gases,Frenos,Luces".equals(pruebas)) {
-            frmg.setVisible(true);
-            frmf.setVisible(true);
-            pl.setVisible(true);
-        }
-
-    }//GEN-LAST:event_btnPruebaActionPerformed
-
-    private void btnPruebaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPruebaMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPruebaMousePressed
-
   
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrueba;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable tabla;
