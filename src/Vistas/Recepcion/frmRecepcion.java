@@ -41,10 +41,11 @@ public class frmRecepcion extends javax.swing.JFrame {
         btnCerrar = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblcerrar = new javax.swing.JLabel();
+        lblminimizar = new javax.swing.JLabel();
         pnl_host = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -253,19 +254,22 @@ public class frmRecepcion extends javax.swing.JFrame {
 
         pnl_overlay.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
-        jLabel2.setText("X");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblcerrar.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        lblcerrar.setText("X");
+        lblcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel2MousePressed(evt);
+                lblcerrarMousePressed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
-        jLabel1.setText("-");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblminimizar.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
+        lblminimizar.setText("-");
+        lblminimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblminimizarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblminimizarMousePressed(evt);
             }
         });
 
@@ -275,16 +279,16 @@ public class frmRecepcion extends javax.swing.JFrame {
             pnl_overlayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_overlayLayout.createSequentialGroup()
                 .addGap(0, 834, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnl_overlayLayout.setVerticalGroup(
             pnl_overlayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_overlayLayout.createSequentialGroup()
                 .addGroup(pnl_overlayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblcerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblminimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 60, Short.MAX_VALUE))
         );
 
@@ -292,18 +296,26 @@ public class frmRecepcion extends javax.swing.JFrame {
 
         pnl_host.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raven/cell/Logo para Taller de Mecánica Rueda Dentada Clásico Negro y Beige.png"))); // NOI18N
+
         javax.swing.GroupLayout pnl_hostLayout = new javax.swing.GroupLayout(pnl_host);
         pnl_host.setLayout(pnl_hostLayout);
         pnl_hostLayout.setHorizontalGroup(
             pnl_hostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_hostLayout.createSequentialGroup()
-                .addGap(210, 210, 210)
+                .addGap(196, 196, 196)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(619, 619, 619)
                 .addComponent(jLabel4)
-                .addContainerGap(670, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_hostLayout.setVerticalGroup(
             pnl_hostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addGroup(pnl_hostLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(pnl_host, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 880, 530));
@@ -334,13 +346,13 @@ public class frmRecepcion extends javax.swing.JFrame {
         pnl_host.repaint();
     }//GEN-LAST:event_btnRptTurnoMousePressed
 
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+    private void lblcerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMousePressed
         System.exit(0);
-    }//GEN-LAST:event_jLabel2MousePressed
+    }//GEN-LAST:event_lblcerrarMousePressed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblminimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMouseClicked
         this.setState(JFrame.ICONIFIED);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblminimizarMouseClicked
 
     private void btnRegistrarTurnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarTurnoMousePressed
         // TODO add your handling code here:
@@ -429,6 +441,10 @@ public class frmRecepcion extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCerrarMousePressed
 
+    private void lblminimizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblminimizarMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblminimizarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -473,9 +489,8 @@ public class frmRecepcion extends javax.swing.JFrame {
     private javax.swing.JPanel btnRegistrarTurno;
     private javax.swing.JPanel btnRegitrarVehiculo;
     private javax.swing.JPanel btnRptTurno;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -484,6 +499,8 @@ public class frmRecepcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblcerrar;
+    private javax.swing.JLabel lblminimizar;
     private javax.swing.JPanel pnl_host;
     private javax.swing.JPanel pnl_overlay;
     private javax.swing.JPanel side_pane;
