@@ -6,17 +6,15 @@ package Vistas.Recepcion;
 
 import Conexion.Conexion;
 import Conexion.NonEditableEditor;
+import com.itextpdf.text.DocumentException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.PdfPTable;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import javax.swing.text.Document;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
@@ -38,7 +36,7 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
     private final TableToPDF pdf;
     public pnlReporteTurnos() {
         initComponents();
-        cx = new Conexion("rtv_ist17j2");
+        cx = new Conexion("rtv_ist17j");
         mostrarDatos();
         setTableNonEditable(tabla);
         pdf = new TableToPDF();
@@ -78,7 +76,7 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
         String[] datos = new String[5];
 
         try {
-            String query = "CALL sp_reporte_turno() ";
+            String query = "CALL sp_reporte_recepcion(); ";
             Statement st = cx.conecta().createStatement();
             ResultSet rs = st.executeQuery(query);
 

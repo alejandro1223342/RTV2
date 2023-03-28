@@ -27,7 +27,7 @@ public class pnlRegistroClientes extends javax.swing.JPanel {
      */
     public pnlRegistroClientes() {
         initComponents();
-        cx = new Conexion("rtv_ist17j2");
+        cx = new Conexion("rtv_ist17j");
 
     }
 

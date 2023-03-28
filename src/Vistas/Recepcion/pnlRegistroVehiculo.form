@@ -93,7 +93,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="302" max="-2" attributes="0"/>
                           <Component id="txtChasis" min="-2" pref="263" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="71" max="32767" attributes="0"/>
                           <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>

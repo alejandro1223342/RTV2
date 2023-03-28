@@ -19,7 +19,7 @@ public class pnlRegistroVehiculo extends javax.swing.JPanel {
     public pnlRegistroVehiculo() {
         setPreferredSize(new Dimension(880, 530));
         initComponents();
-        cx = new Conexion("rtv_ist17j2");
+        cx = new Conexion("rtv_ist17j");
         comboModelo();
         comboClase();
         comboMarca();

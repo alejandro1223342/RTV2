@@ -40,7 +40,7 @@ public class TableToPDF {
             if (!rutaArchivo.endsWith(".pdf")) {
                 rutaArchivo += ".pdf";
             }
-            Document document = new Document(PageSize.A3);
+            Document document= new Document (PageSize.A3);
 
             try {
                 PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(rutaArchivo));
