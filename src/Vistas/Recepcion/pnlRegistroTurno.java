@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -29,6 +30,7 @@ public class pnlRegistroTurno extends javax.swing.JPanel {
         cx = new Conexion("rtv_ist17j");
         traerNroTurno();
         comboVehiculo();
+        AutoCompleteDecorator.decorate(comboVehiculo);
 
     }
 

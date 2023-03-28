@@ -191,10 +191,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtapellidos">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtapellidosKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtcelular">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtcelularKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtdireccion">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtdireccionKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -213,6 +222,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtcorreo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtcorreoKeyTyped"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="btnRegistro">
           <Properties>

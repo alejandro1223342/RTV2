@@ -5,10 +5,12 @@
 package Vistas.Recepcion;
 
 import Conexion.Conexion;
+import java.awt.HeadlessException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -26,6 +28,20 @@ public class pnlRegistroClientes extends javax.swing.JPanel {
     public pnlRegistroClientes() {
         initComponents();
         cx = new Conexion("rtv_ist17j2");
+
+    }
+
+    public void validarCorreo(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyChar() >= 32 && evt.getKeyChar() <= 44
+                || evt.getKeyChar() == 47
+                || evt.getKeyChar() >= 58 && evt.getKeyChar() <= 63
+                || evt.getKeyChar() >= 91 && evt.getKeyChar() <= 94
+                || evt.getKeyChar() == 96
+                || evt.getKeyChar() >= 123 && evt.getKeyChar() <= 255) {
+            JOptionPane.showMessageDialog(null, "No se permite este caracter", "Error", JOptionPane.ERROR_MESSAGE);
+            evt.consume();
+
+        }
 
     }
 
@@ -85,11 +101,35 @@ public class pnlRegistroClientes extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Celular:");
 
+        txtapellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellidosKeyTyped(evt);
+            }
+        });
+
+        txtcelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcelularKeyTyped(evt);
+            }
+        });
+
+        txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdireccionKeyTyped(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Direccion:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Correo:");
+
+        txtcorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcorreoKeyTyped(evt);
+            }
+        });
 
         btnRegistro.setBackground(new java.awt.Color(153, 153, 153));
         btnRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,11 +271,26 @@ public class pnlRegistroClientes extends javax.swing.JPanel {
                 ResultSet rs = st.executeQuery(query);
 
                 JOptionPane.showMessageDialog(null, "datos guardaros");
+                txtcedula.requestFocus();
+                txtcedula.setText("");
+                txtnombres.setText("");
+                txtapellidos.setText("");
+                txtcelular.setText("");
+                txtdireccion.setText("");
+                txtcorreo.setText("");
             }
 
             //String query = "call sp_logeo('" + usuario + "','" + contra + "');";*/
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "no se guardaron los datos ");
+        } catch (HeadlessException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "El Cliente ya existe");
+            txtcedula.requestFocus();
+
+            txtcedula.setText("");
+            txtnombres.setText("");
+            txtapellidos.setText("");
+            txtcelular.setText("");
+            txtdireccion.setText("");
+            txtcorreo.setText("");
 
         }
     }//GEN-LAST:event_btnRegistroMousePressed
@@ -254,6 +309,7 @@ public class pnlRegistroClientes extends javax.swing.JPanel {
             evt.consume(); // Este método previene que el evento se propague y se ignora la entrada del usuario
         }
 
+
     }//GEN-LAST:event_txtnombresKeyTyped
 
     private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
@@ -267,6 +323,48 @@ public class pnlRegistroClientes extends javax.swing.JPanel {
             evt.consume(); // Este método previene que el evento se propague y se ignora la entrada del usuario
         }
     }//GEN-LAST:event_txtcedulaKeyTyped
+
+    private void txtcelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcelularKeyTyped
+        String texto = txtcelular.getText();
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c) && texto.length() < 10) {
+            // Se permite ingresar el dígito
+        } else {
+            evt.consume(); // Este método previene que el evento se propague y se ignora la entrada del usuario
+        }
+    }//GEN-LAST:event_txtcelularKeyTyped
+
+    private void txtapellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidosKeyTyped
+        int contador = 0;
+        String texto = txtapellidos.getText().trim(); // Se elimina los espacios en blanco al inicio y al final del texto
+        char c = evt.getKeyChar();
+        if ((Character.isLetter(c) || c == ' ') && contador < 100 && texto.length() < 100) {
+            String cad = ("" + c).toUpperCase();
+            c = cad.charAt(0);
+            evt.setKeyChar(c);
+            contador++;
+        } else {
+            evt.consume(); // Este método previene que el evento se propague y se ignora la entrada del usuario
+        }
+    }//GEN-LAST:event_txtapellidosKeyTyped
+
+    private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
+        int contador = 0;
+        String texto = txtnombres.getText().trim(); // Se elimina los espacios en blanco al inicio y al final del texto
+        char c = evt.getKeyChar();
+        if ((Character.isLetter(c) || c == ' ' || Character.isDigit(c)) && contador < 200 && texto.length() < 200) {
+            String cad = ("" + c).toUpperCase();
+            c = cad.charAt(0);
+            evt.setKeyChar(c);
+            contador++;
+        } else {
+            evt.consume(); // Este método previene que el evento se propague y se ignora la entrada del usuario
+        }
+    }//GEN-LAST:event_txtdireccionKeyTyped
+
+    private void txtcorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcorreoKeyTyped
+        validarCorreo(evt);
+    }//GEN-LAST:event_txtcorreoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
