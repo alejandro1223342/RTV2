@@ -126,6 +126,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
         System.exit(0);
+        
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

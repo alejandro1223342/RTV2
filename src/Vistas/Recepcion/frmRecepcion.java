@@ -4,7 +4,9 @@
  */
 package Vistas.Recepcion;
 
+import Vistas.Login.frmLogin;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,8 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-
 
 public class frmRecepcion extends javax.swing.JFrame {
 
@@ -30,15 +30,16 @@ public class frmRecepcion extends javax.swing.JFrame {
         side_pane = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel3 = new javax.swing.JPanel();
+        btnRegistrarTurno = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         btnRptTurno = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        btnRevisiones1 = new javax.swing.JPanel();
+        btnRegistrarCliente = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btnRevisiones2 = new javax.swing.JPanel();
+        btnRegitrarVehiculo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         pnl_overlay = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -63,10 +64,16 @@ public class frmRecepcion extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 2));
         side_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 120, -1));
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistrarTurno.setBackground(new java.awt.Color(102, 102, 102));
+        btnRegistrarTurno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegistrarTurnoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegistrarTurnoMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel3MousePressed(evt);
+                btnRegistrarTurnoMousePressed(evt);
             }
         });
 
@@ -75,27 +82,33 @@ public class frmRecepcion extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Registrar Turno");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnRegistrarTurnoLayout = new javax.swing.GroupLayout(btnRegistrarTurno);
+        btnRegistrarTurno.setLayout(btnRegistrarTurnoLayout);
+        btnRegistrarTurnoLayout.setHorizontalGroup(
+            btnRegistrarTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegistrarTurnoLayout.createSequentialGroup()
                 .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        btnRegistrarTurnoLayout.setVerticalGroup(
+            btnRegistrarTurnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnRegistrarTurnoLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel6)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        side_pane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 50));
+        side_pane.add(btnRegistrarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 50));
 
         btnRptTurno.setBackground(new java.awt.Color(102, 102, 102));
         btnRptTurno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRptTurnoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRptTurnoMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnRptTurnoMousePressed(evt);
             }
@@ -125,16 +138,16 @@ public class frmRecepcion extends javax.swing.JFrame {
 
         side_pane.add(btnRptTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 170, -1));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Cerrar sesión");
-        side_pane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, 40));
-
-        btnRevisiones1.setBackground(new java.awt.Color(102, 102, 102));
-        btnRevisiones1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistrarCliente.setBackground(new java.awt.Color(102, 102, 102));
+        btnRegistrarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegistrarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegistrarClienteMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnRevisiones1MousePressed(evt);
+                btnRegistrarClienteMousePressed(evt);
             }
         });
 
@@ -143,29 +156,35 @@ public class frmRecepcion extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Registrar Cliente");
 
-        javax.swing.GroupLayout btnRevisiones1Layout = new javax.swing.GroupLayout(btnRevisiones1);
-        btnRevisiones1.setLayout(btnRevisiones1Layout);
-        btnRevisiones1Layout.setHorizontalGroup(
-            btnRevisiones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisiones1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+        javax.swing.GroupLayout btnRegistrarClienteLayout = new javax.swing.GroupLayout(btnRegistrarCliente);
+        btnRegistrarCliente.setLayout(btnRegistrarClienteLayout);
+        btnRegistrarClienteLayout.setHorizontalGroup(
+            btnRegistrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegistrarClienteLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
-        btnRevisiones1Layout.setVerticalGroup(
-            btnRevisiones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisiones1Layout.createSequentialGroup()
+        btnRegistrarClienteLayout.setVerticalGroup(
+            btnRegistrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegistrarClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btnRevisiones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 170, -1));
+        side_pane.add(btnRegistrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 170, -1));
 
-        btnRevisiones2.setBackground(new java.awt.Color(102, 102, 102));
-        btnRevisiones2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegitrarVehiculo.setBackground(new java.awt.Color(102, 102, 102));
+        btnRegitrarVehiculo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegitrarVehiculoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegitrarVehiculoMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnRevisiones2MousePressed(evt);
+                btnRegitrarVehiculoMousePressed(evt);
             }
         });
 
@@ -174,24 +193,61 @@ public class frmRecepcion extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Registrar Vehiculo");
 
-        javax.swing.GroupLayout btnRevisiones2Layout = new javax.swing.GroupLayout(btnRevisiones2);
-        btnRevisiones2.setLayout(btnRevisiones2Layout);
-        btnRevisiones2Layout.setHorizontalGroup(
-            btnRevisiones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisiones2Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnRegitrarVehiculoLayout = new javax.swing.GroupLayout(btnRegitrarVehiculo);
+        btnRegitrarVehiculo.setLayout(btnRegitrarVehiculoLayout);
+        btnRegitrarVehiculoLayout.setHorizontalGroup(
+            btnRegitrarVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegitrarVehiculoLayout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
-        btnRevisiones2Layout.setVerticalGroup(
-            btnRevisiones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRevisiones2Layout.createSequentialGroup()
+        btnRegitrarVehiculoLayout.setVerticalGroup(
+            btnRegitrarVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegitrarVehiculoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        side_pane.add(btnRevisiones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, -1));
+        side_pane.add(btnRegitrarVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, -1));
+
+        btnCerrar.setBackground(new java.awt.Color(102, 102, 102));
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCerrarMousePressed(evt);
+            }
+        });
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Cerrar sesión");
+
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addContainerGap())
+        );
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        side_pane.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 170, -1));
 
         jPanel1.add(side_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 620));
 
@@ -286,34 +342,93 @@ public class frmRecepcion extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+    private void btnRegistrarTurnoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarTurnoMousePressed
         // TODO add your handling code here:
-         pnlRegistroTurno pl = new pnlRegistroTurno();
+        pnlRegistroTurno pl = new pnlRegistroTurno();
         pl.setSize(880, 530);
         pl.setLocation(0, 0);
-        
+
         pnl_host.removeAll();
         pnl_host.add(pl, BorderLayout.CENTER);
         pnl_host.revalidate();
         pnl_host.repaint();
-    }//GEN-LAST:event_jPanel3MousePressed
+    }//GEN-LAST:event_btnRegistrarTurnoMousePressed
 
-    private void btnRevisiones1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisiones1MousePressed
+    private void btnRegistrarClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarClienteMousePressed
         // TODO add your handling code here:
-          pnlRegistroClientes pl = new pnlRegistroClientes();
+        pnlRegistroClientes pl = new pnlRegistroClientes();
         pl.setSize(880, 530);
         pl.setLocation(0, 0);
-        
+
         pnl_host.removeAll();
         pnl_host.add(pl, BorderLayout.CENTER);
         pnl_host.revalidate();
         pnl_host.repaint();
-    }//GEN-LAST:event_btnRevisiones1MousePressed
+    }//GEN-LAST:event_btnRegistrarClienteMousePressed
 
-    private void btnRevisiones2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRevisiones2MousePressed
+    private void btnRegitrarVehiculoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegitrarVehiculoMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRevisiones2MousePressed
-               
+
+        pnlRegistroVehiculo pl = new pnlRegistroVehiculo();
+        pl.setSize(880, 530);
+        pl.setLocation(0, 0);
+
+        pnl_host.removeAll();
+        pnl_host.add(pl, BorderLayout.CENTER);
+        pnl_host.revalidate();
+        pnl_host.repaint();
+    }//GEN-LAST:event_btnRegitrarVehiculoMousePressed
+
+    private void btnRegistrarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarClienteMouseEntered
+        btnRegistrarCliente.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_btnRegistrarClienteMouseEntered
+
+    private void btnRegistrarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarClienteMouseExited
+        btnRegistrarCliente.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnRegistrarClienteMouseExited
+
+    private void btnRegitrarVehiculoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegitrarVehiculoMouseEntered
+        // TODO add your handling code here:
+        btnRegitrarVehiculo.setBackground(new Color(153, 153, 153));
+
+    }//GEN-LAST:event_btnRegitrarVehiculoMouseEntered
+
+    private void btnRegitrarVehiculoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegitrarVehiculoMouseExited
+        // TODO add your handling code here:
+        btnRegitrarVehiculo.setBackground(new Color(102, 102, 102));
+
+    }//GEN-LAST:event_btnRegitrarVehiculoMouseExited
+
+    private void btnRegistrarTurnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarTurnoMouseEntered
+        btnRegistrarTurno.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_btnRegistrarTurnoMouseEntered
+
+    private void btnRegistrarTurnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarTurnoMouseExited
+        btnRegistrarTurno.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnRegistrarTurnoMouseExited
+
+    private void btnRptTurnoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRptTurnoMouseEntered
+        btnRptTurno.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_btnRptTurnoMouseEntered
+
+    private void btnRptTurnoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRptTurnoMouseExited
+        btnRptTurno.setBackground(new Color(102, 102, 102));
+    }//GEN-LAST:event_btnRptTurnoMouseExited
+
+    private void btnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseEntered
+        btnCerrar.setBackground(new Color(153, 153, 153));
+    }//GEN-LAST:event_btnCerrarMouseEntered
+
+    private void btnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseExited
+        btnCerrar.setBackground(new Color(102, 102, 102));    }//GEN-LAST:event_btnCerrarMouseExited
+
+    private void btnCerrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMousePressed
+        // TODO add your handling code here:
+
+        System.exit(0);
+
+    }//GEN-LAST:event_btnCerrarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -344,29 +459,30 @@ public class frmRecepcion extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            
+
             public void run() {
                 new frmRecepcion().setVisible(true);
-               
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnRevisiones1;
-    private javax.swing.JPanel btnRevisiones2;
+    private javax.swing.JPanel btnCerrar;
+    private javax.swing.JPanel btnRegistrarCliente;
+    private javax.swing.JPanel btnRegistrarTurno;
+    private javax.swing.JPanel btnRegitrarVehiculo;
     private javax.swing.JPanel btnRptTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnl_host;
     private javax.swing.JPanel pnl_overlay;

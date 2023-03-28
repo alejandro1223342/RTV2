@@ -5,6 +5,7 @@
 package Vistas.Recepcion;
 
 import Conexion.Conexion;
+import Conexion.NonEditableEditor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,6 +17,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import raven.cell.TableActionCellRender;
 
 /**
@@ -23,16 +29,43 @@ import raven.cell.TableActionCellRender;
  * @author Usuario
  */
 public class pnlReporteTurnos extends javax.swing.JPanel {
+
     Conexion cx;
+
     /**
      * Creates new form pnlReporteTurnos
      */
+    private final TableToPDF pdf;
     public pnlReporteTurnos() {
         initComponents();
-        cx = new Conexion("rtv_ist17j");
+        cx = new Conexion("rtv_ist17j2");
         mostrarDatos();
+        setTableNonEditable(tabla);
+        pdf = new TableToPDF();
+        
+        TableColumnModel columnModel = tabla.getColumnModel();
+        tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        TableColumn columna0 = columnModel.getColumn(0);
+        TableColumn columna1 = columnModel.getColumn(1);
+        TableColumn columna2 = columnModel.getColumn(2);
+        TableColumn columna3 = columnModel.getColumn(3);
+        TableColumn columna4 = columnModel.getColumn(4);
+        columna0.setPreferredWidth(100);
+        columna1.setPreferredWidth(150);
+        columna2.setPreferredWidth(150);
+        columna3.setPreferredWidth(150);
+        columna4.setPreferredWidth(300);
     }
-    
+
+    private void setTableNonEditable(JTable tcliente) {
+        for (int i = 0; i < tcliente.getColumnCount(); i++) {
+            for (int j = 0; j < tcliente.getRowCount(); j++) {
+                tcliente.getModel().setValueAt(tcliente.getValueAt(j, i), j, i);
+            }
+            tcliente.getColumnModel().getColumn(i).setCellEditor(new NonEditableEditor());
+        }
+    }
+
     public void mostrarDatos() {
         DefaultTableModel tcliente = new DefaultTableModel();
         tcliente.addColumn("TURNO");
@@ -62,9 +95,9 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e + "Error en la consulta");
-}
+        }
 
-}
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +110,8 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         btn_pdf = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
@@ -89,17 +124,57 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
             }
         });
 
+        btnImprimir.setBackground(new java.awt.Color(102, 102, 102));
+        btnImprimir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnImprimirMousePressed(evt);
+            }
+        });
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raven/cell/pdf.png"))); // NOI18N
+        jLabel7.setText("PDF");
+
+        javax.swing.GroupLayout btnImprimirLayout = new javax.swing.GroupLayout(btnImprimir);
+        btnImprimir.setLayout(btnImprimirLayout);
+        btnImprimirLayout.setHorizontalGroup(
+            btnImprimirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnImprimirLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        btnImprimirLayout.setVerticalGroup(
+            btnImprimirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnImprimirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4", "null"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla.setPreferredSize(new java.awt.Dimension(526, 160));
+        tabla.setRowHeight(40);
         jScrollPane2.setViewportView(tabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -109,42 +184,46 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
+                        .addGap(382, 382, 382)
                         .addComponent(btn_pdf))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                        .addGap(364, 364, 364)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(147, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121)
                 .addComponent(btn_pdf)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_pdfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pdfMouseClicked
-          
-            
+/*
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
             PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Escritorio/Reporte.pdf"));
             documento.open();
-            
+
             PdfPTable tabla = new PdfPTable(5);
             tabla.addCell("TURNO");
             tabla.addCell("PLACA");
             tabla.addCell("FECHA");
             tabla.addCell("COSTO");
             tabla.addCell("PRUEBAS");
-            
+
             try {
                 String query = "CALL sp_reporte_turno()";
                 Statement st = cx.conecta().createStatement();
@@ -169,14 +248,25 @@ public class pnlReporteTurnos extends javax.swing.JPanel {
         } catch (DocumentException | FileNotFoundException e) {
             System.out.println("Error : " + e);
         }
+*/
     }//GEN-LAST:event_btn_pdfMouseClicked
-    
-    
-    
+
+    private void btnImprimirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImprimirMousePressed
+        try {
+            // TODO add your handling code here:
+            pdf.exportarTabla(tabla);
+        } catch (DocumentException ex) {
+            Logger.getLogger(pnlReporteTurnos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(pnlReporteTurnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImprimirMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnImprimir;
     private javax.swing.JButton btn_pdf;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabla;
